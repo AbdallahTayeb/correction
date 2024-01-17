@@ -1,11 +1,11 @@
-name: Exercice 2
+name: Exercice 2 Vars
 
 on:
   workflow_dispatch:
 
 env:
-  a: 1
-  b: 3
+  a: ${{vars.a}}
+  b: ${{vars.b}}
 
 jobs:
   job1:
@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: print a et b
-      if: ${{env.a > 0 && env.b > 0}} 
+      if: (vars.a > 0) && (vars.b > 0)
       run: |
         echo ${{ env.a }}
         echo ${{ env.b }}
