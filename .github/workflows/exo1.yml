@@ -19,7 +19,7 @@ jobs:
   job2:
     needs: job1
     runs-on: ubuntu-latest
-    if: failure()
+    if: always()
 
     steps:
     - name: Display Message for Job 2
