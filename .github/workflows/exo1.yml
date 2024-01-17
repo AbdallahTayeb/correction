@@ -1,0 +1,26 @@
+name : Exercice 1
+
+on:
+  push:
+    tags:
+      - 'release*'
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    env:
+      VAR1: Correction
+
+    steps:
+    - name: Display VAR1
+      run: echo $VAR1
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    if: failure()
+
+    steps:
+    - name: Display Message for Job 2
+      run: echo "Le job 1 à echoué"
